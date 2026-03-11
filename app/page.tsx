@@ -1,8 +1,11 @@
+import Hero from "@/components/home/Hero";
+import About from "@/components/home/About";
+
 export default function Home() {
   return (
     <main>
-      <h1>Insolvo</h1>
-      <p>My website is live 🚀</p>
+      <Hero />
+      <About />
     </main>
   );
 }

@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
+import { Montserrat, Open_Sans } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
   subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-heading",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const openSans = Open_Sans({
   subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-body",
 });
-
 export const metadata: Metadata = {
-  title: "Insolvo",
-  description: "Insolvo official website",
+  title: {
+    default: "Insolvo",
+    template: "%s | Insolvo",
+  },
+  description: "Official website of Insolvo",
 };
 
 export default function RootLayout({
@@ -24,10 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+<body className={`${montserrat.variable} ${openSans.variable} bg-white text-gray-900 antialiased`}>        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

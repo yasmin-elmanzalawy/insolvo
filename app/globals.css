@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Open Sans", sans-serif;
 }
 
 @theme inline {
