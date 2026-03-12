@@ -36,78 +36,94 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full">
       <div
-        className={`mx-auto flex w-full items-center justify-between bg-[#223f77] shadow-lg transition-all duration-300 rounded-b-xl ${
-          isScrolled ? "px-5 py-3" : "px-6 py-4"
+        className={`bg-[#223f77]/95 backdrop-blur-md border-b border-white/10 transition-all duration-300 ${
+          isScrolled ? "py-3" : "py-4"
         }`}
       >
-        <Link href="/" className="flex items-center gap-3" onClick={closeMenu}>
-          <div className="flex h-10 w-10 items-center justify-center rounded-md">
-            <span className="text-2xl font-bold text-cyan-200">H</span>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+          
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center gap-3"
+            onClick={closeMenu}
+          >
+            <img
+              src="/images/hero/logo.png"
+              alt="INSOLVO Logo"
+              className="h-10 w-auto object-contain"
+            />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-10 lg:flex">
+            <nav className="flex items-center gap-8 ">
+              <Link
+                href="/#hero"
+                className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Home
+              </Link>
+
+              <Link
+                href="/#about"
+                className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                About
+              </Link>
+
+              <Link
+                href="/#services"
+                className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Services
+              </Link>
+            </nav>
+
+            {/* Contact Button */}
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#223f77]"
+            >
+              Contact Us
+              <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </div>
 
-          <span className="text-lg font-semibold tracking-[0.2em] text-white sm:text-xl">
-            INSOLVO
-          </span>
-        </Link>
-
-        <div className="hidden flex-1 items-center justify-end gap-10 lg:flex">
-          <nav className="mr-4 flex items-center gap-8">
-            <Link
-              href="/#hero"
-              className="text-sm font-medium text-white/90 transition hover:text-white"
-            >
-              Home
-            </Link>
-
-            <Link
-              href="/#about"
-              className="text-sm font-medium text-white/90 transition hover:text-white"
-            >
-              About
-            </Link>
-
-            <Link
-              href="/#services"
-              className="text-sm font-medium text-white/90 transition hover:text-white"
-            >
-              Services
-            </Link>
-          </nav>
-
-          <Link
-            href="/contact"
-            className="group relative inline-flex items-center gap-1 overflow-hidden rounded-full px-8 py-3 text-sm font-semibold text-white shadow-[0_0_0_2px_white] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hover:rounded-xl hover:text-black hover:shadow-[0_0_0_12px_transparent] active:scale-95 active:shadow-[0_0_0_4px_white]"
+          {/* Mobile Hamburger */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex flex-col gap-1 lg:hidden"
+            aria-label="Toggle Menu"
           >
-            <span className="absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:h-[220px] group-hover:w-[220px] group-hover:opacity-100" />
-
-            <ArrowIcon className="absolute right-4 z-10 h-5 w-5 text-white transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-right-8 group-hover:text-black" />
-
-            <span className="relative z-10 -translate-x-2 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2">
-              Contact Us
-            </span>
-
-            <ArrowIcon className="absolute -left-8 z-10 h-5 w-5 text-white transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:text-black" />
-          </Link>
+            <span
+              className={`h-[2px] w-6 bg-white transition ${
+                isOpen ? "translate-y-[6px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-6 bg-white transition ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-6 bg-white transition ${
+                isOpen ? "-translate-y-[6px] -rotate-45" : ""
+              }`}
+            />
+          </button>
         </div>
-
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-white lg:hidden"
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-        >
-          <span className="text-2xl leading-none">{isOpen ? "×" : "☰"}</span>
-        </button>
       </div>
 
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="w-full rounded-b-xl bg-[#223f77] px-6 py-5 shadow-lg lg:hidden">
-          <nav className="flex flex-col gap-4">
+        <div className="border-b border-white/10 bg-[#223f77] lg:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-6">
+
             <Link
               href="/#hero"
               onClick={closeMenu}
-              className="text-sm font-medium text-white/90 transition hover:text-white"
+              className="text-white/90 transition hover:text-white"
             >
               Home
             </Link>
@@ -115,7 +131,7 @@ export default function Navbar() {
             <Link
               href="/#about"
               onClick={closeMenu}
-              className="text-sm font-medium text-white/90 transition hover:text-white"
+              className="text-white/90 transition hover:text-white"
             >
               About
             </Link>
@@ -123,44 +139,21 @@ export default function Navbar() {
             <Link
               href="/#services"
               onClick={closeMenu}
-              className="text-sm font-medium text-white/90 transition hover:text-white"
+              className="text-white/90 transition hover:text-white"
             >
               Services
             </Link>
 
             <Link
-  href="/contact"
-  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#4aa3ff] px-6 py-3 text-sm font-semibold text-white transition-all duration-500 hover:bg-[#3797fb]"
->
-  {/* expanding circle */}
-  <span className="absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 opacity-0 transition-all duration-700 group-hover:h-[220px] group-hover:w-[220px] group-hover:opacity-100" />
+              href="/contact"
+              onClick={closeMenu}
+              className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white hover:text-[#223f77]"
+            >
+              Contact Us
+              <ArrowIcon className="h-4 w-4" />
+            </Link>
 
-  {/* arrow right */}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="absolute right-4 h-5 w-5 transition-all duration-500 group-hover:-right-8"
-    viewBox="0 0 24 24"
-    fill="white"
-  >
-    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-  </svg>
-
-  {/* text */}
-  <span className="relative z-10 transition-all duration-500 group-hover:translate-x-2">
-    Contact Us
-  </span>
-
-  {/* arrow left */}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="absolute -left-8 h-5 w-5 transition-all duration-500 group-hover:left-4"
-    viewBox="0 0 24 24"
-    fill="white"
-  >
-    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-  </svg>
-</Link>
-          </nav>
+          </div>
         </div>
       )}
     </header>
