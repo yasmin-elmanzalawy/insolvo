@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 type IconProps = { className?: string };
 
@@ -23,11 +24,23 @@ function ClickIcon({ className = "h-6 w-6" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
       <path
-        d="M12 3v4M4.93 4.93l2.83 2.83M3 12h4M17 12l-4.5-8v17l3.2-3.2 2.8 2.2 1.5-1.9-2.8-2.2L21 13l-4 1Z"
+        d="M12 4a7 7 0 1 0 7 7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M15 3h6v6"
         stroke="currentColor"
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+      <path
+        d="M21 3 12 12"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -146,6 +159,8 @@ const scrollAreaClass =
 
 export default function Services() {
   const AddonIcon = addon.icon;
+  const [openService, setOpenService] = useState<number | null>(null);
+  const [openAddon, setOpenAddon] = useState(false);
 
   return (
     <section
@@ -176,6 +191,7 @@ export default function Services() {
         <ul className="mt-14 grid items-stretch gap-8 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, i) => {
             const Icon = service.icon;
+            const isOpen = openService === i;
 
             return (
               <li key={service.title} className="list-none">
@@ -187,7 +203,11 @@ export default function Services() {
                   <div className="absolute inset-x-0 top-0 h-1 bg-[#00C2B8]" />
                   <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#00C2B8]/6 blur-2xl transition-all duration-300 group-hover:bg-[#00C2B8]/10" />
 
-                  <div className="relative flex h-full flex-col transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+                  <div
+                    className={`relative flex h-full flex-col transition-opacity duration-300 ${
+                      isOpen ? "opacity-0 md:opacity-100" : "opacity-100 group-hover:opacity-0"
+                    }`}
+                  >
                     <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#00C2B8]/15 bg-[#00C2B8]/8 text-[#00C2B8] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#00C2B8] group-hover:text-white">
                       <Icon className="h-6 w-6" />
                     </div>
@@ -208,12 +228,26 @@ export default function Services() {
                       {service.description}
                     </p>
 
-                    <p className="mt-auto pt-6 text-sm font-semibold text-[#00C2B8]">
-                      See More
-                    </p>
+                    <div className="mt-auto pt-6">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenService((prev) => (prev === i ? null : i))
+                        }
+                        className="text-sm font-semibold text-[#00C2B8] md:pointer-events-none"
+                      >
+                        {isOpen ? "Close" : "See More"}
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="absolute inset-0 z-10 flex flex-col rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(240,253,251,0.98)_100%)] p-5 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 group-focus-within:opacity-100 sm:p-6">
+                  <div
+                    className={`absolute inset-0 z-10 flex flex-col rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(240,253,251,0.98)_100%)] p-5 backdrop-blur-sm transition-all duration-300 sm:p-6 ${
+                      isOpen
+                        ? "opacity-100"
+                        : "opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+                    } md:group-hover:opacity-100`}
+                  >
                     <div className="mb-4 flex items-center gap-3">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#00C2B8] text-white shadow-md">
                         <Icon className="h-5 w-5" />
@@ -227,6 +261,14 @@ export default function Services() {
                           {service.subtitle}
                         </p>
                       </div>
+
+                      <button
+                        type="button"
+                        onClick={() => setOpenService(null)}
+                        className="ml-auto rounded-full border border-[#00C2B8]/20 px-3 py-1 text-xs font-semibold text-[#00C2B8] md:hidden"
+                      >
+                        Close
+                      </button>
                     </div>
 
                     <div className={scrollAreaClass}>
@@ -252,12 +294,6 @@ export default function Services() {
                       </div>
                     </div>
                   </div>
-
-                  <button
-                    type="button"
-                    aria-label={`Show more about ${service.title}`}
-                    className="absolute inset-0 z-20 block cursor-pointer rounded-[28px] md:hidden"
-                  />
                 </motion.article>
               </li>
             );
@@ -269,7 +305,11 @@ export default function Services() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="group relative mt-16 w-full overflow-hidden rounded-2xl bg-[#223f77] p-8 text-center text-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg sm:p-10"
         >
-          <div className="relative transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+          <div
+            className={`relative transition-opacity duration-300 ${
+              openAddon ? "opacity-0 md:opacity-100" : "opacity-100 group-hover:opacity-0"
+            }`}
+          >
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 text-[#00C2B8] transition group-hover:bg-[#00C2B8] group-hover:text-white">
               <AddonIcon className="h-7 w-7" />
             </div>
@@ -284,10 +324,24 @@ export default function Services() {
               {addon.description}
             </p>
 
-            <p className="mt-6 text-sm font-semibold text-[#00C2B8]">See More</p>
+            <div className="mt-6">
+              <button
+                type="button"
+                onClick={() => setOpenAddon((prev) => !prev)}
+                className="text-sm font-semibold text-[#00C2B8] md:pointer-events-none"
+              >
+                {openAddon ? "Close" : "See More"}
+              </button>
+            </div>
           </div>
 
-          <div className="absolute inset-0 z-10 flex flex-col bg-[linear-gradient(180deg,rgba(34,63,119,0.96)_0%,rgba(20,34,67,0.98)_100%)] p-5 text-left opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 group-focus-within:opacity-100 sm:p-6">
+          <div
+            className={`absolute inset-0 z-10 flex flex-col bg-[linear-gradient(180deg,rgba(34,63,119,0.96)_0%,rgba(20,34,67,0.98)_100%)] p-5 text-left backdrop-blur-sm transition-all duration-300 sm:p-6 ${
+              openAddon
+                ? "opacity-100"
+                : "opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+            } md:group-hover:opacity-100`}
+          >
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#00C2B8] text-white shadow-md">
                 <AddonIcon className="h-5 w-5" />
@@ -299,11 +353,17 @@ export default function Services() {
                   {addon.subtitle}
                 </p>
               </div>
+
+              <button
+                type="button"
+                onClick={() => setOpenAddon(false)}
+                className="ml-auto rounded-full border border-[#00C2B8]/20 px-3 py-1 text-xs font-semibold text-[#00C2B8] md:hidden"
+              >
+                Close
+              </button>
             </div>
 
-            <div
-              className="min-h-0 flex-1 overflow-y-auto pr-2 [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#00C2B8]/70 hover:[&::-webkit-scrollbar-thumb]:bg-[#00C2B8]"
-            >
+            <div className="min-h-0 flex-1 overflow-y-auto pr-2 [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#00C2B8]/70 hover:[&::-webkit-scrollbar-thumb]:bg-[#00C2B8]">
               <ul className="space-y-3">
                 {addon.hoverPoints.map((point) => (
                   <li
@@ -326,12 +386,6 @@ export default function Services() {
               </div>
             </div>
           </div>
-
-          <button
-            type="button"
-            aria-label={`Show more about ${addon.title}`}
-            className="absolute inset-0 z-20 block cursor-pointer rounded-2xl md:hidden"
-          />
         </motion.article>
       </div>
     </section>
