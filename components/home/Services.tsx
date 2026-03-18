@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 type IconProps = { className?: string };
@@ -80,6 +81,13 @@ const services = [
     icon: PhoneIcon,
     description:
       "Stop wasting time with virtual assistants who read from a script with no emotion. Our cold calling campaign is a fully managed, high-volume outbound machine designed to fill your pipeline with motivated seller leads.",
+    hoverPoints: [
+      "An exclusively tailored, disciplined, and dedicated team aligned to achieving your goals.",
+      "The team includes multiple agents, from callers to management and quality.",
+      "No need to fret over data, we’ve got the lists.",
+      "All of your leads will be stored in a straightforward and secure fashion using our CRM (chosen based on your preference)",
+      "Feeling kept in the dark? Worry not as you’ll be receiving reports on the regular keeping you in the loop.",
+    ],
   },
   {
     title: "PPC Campaign (Pay-Per-Click)",
@@ -87,6 +95,13 @@ const services = [
     icon: ClickIcon,
     description:
       "If you want intent-based leads, you need to be where sellers are searching. Our PPC management service handles everything from the click to the capture.",
+    hoverPoints: [
+      "We give you the spotlight, allowing prospective leads a path directly to you.",
+      "Complete optimization of social media platforms, consistently following up on the regular.",
+      "Website creation and SEO optimization to turn traffic into opportunities.",
+      "Multiple strategic approaches, by tailoring to your current infrastructure and building around it to get to the results we need.",
+      "Reports will keep flowing, allowing you insight on obtained results.",
+    ],
   },
   {
     title: "SMS Blasting Campaign",
@@ -94,15 +109,27 @@ const services = [
     icon: MessageIcon,
     description:
       "Sellers are on their phones. Reach them instantly with targeted text message campaigns designed to generate conversations and opportunities.",
+    hoverPoints: [
+      "The faster approach, utilizing a trained team to reach out to prospective leads via text.",
+      "We’ll always be checking in, making sure to not lose out on long lasting relationships.",
+      "We’re using the best up to date tools and market strategies.",
+      "The data will always be adding up, whilst reaching fruitful results.",
+      "You’ll be aware of the volume coming in, and any new developments on the spot.",
+    ],
   },
 ];
 
 const addon = {
-  title: "Wholesaling Add-On Service",
+  title: "Sales Consulting Add-On Service",
   subtitle: "The Deal Closure Extension",
   icon: DealIcon,
   description:
-    "You have the leads. Now you need them signed. For investors who want a true 'done-for-you' deal flow, we offer our Wholesaling Service Add-on.",
+    "You have the leads. Now you need them signed. For investors who want a true 'done-for-you' deal flow, we offer our Sales Consulting Service Add-on.",
+  hoverPoints: [
+    "Select from three different packages based on scalability (Basic, Advanced, Premium).",
+    "This is for getting things done, in a precise manner. We’re talking about reviving and nurturing leads, gathering complete info, negotiating, building buyers lists, selling deals, etc.",
+    "Keep your bank account flowing with funded deals and a high return on investment.",
+  ],
 };
 
 const fadeUp = {
@@ -112,7 +139,10 @@ const fadeUp = {
 };
 
 const serviceCardClass =
-  "group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-[#dcefeb] bg-white p-8 shadow-[0_12px_35px_rgba(34,63,119,0.08)] transition-all duration-300 hover:-translate-y-2 hover:border-[#00C2B8]/30 hover:shadow-[0_22px_55px_rgba(0,194,184,0.16)]";
+  "group relative flex h-full min-h-[460px] flex-col overflow-hidden rounded-[28px] border border-[#dcefeb] bg-white p-6 shadow-[0_12px_35px_rgba(34,63,119,0.08)] transition-all duration-300 hover:-translate-y-2 hover:border-[#00C2B8]/30 hover:shadow-[0_22px_55px_rgba(0,194,184,0.16)] sm:p-8";
+
+const scrollAreaClass =
+  "min-h-0 flex-1 overflow-y-auto pr-2 [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#dff5f2] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#00C2B8]/70 hover:[&::-webkit-scrollbar-thumb]:bg-[#00C2B8]";
 
 export default function Services() {
   const AddonIcon = addon.icon;
@@ -157,12 +187,12 @@ export default function Services() {
                   <div className="absolute inset-x-0 top-0 h-1 bg-[#00C2B8]" />
                   <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#00C2B8]/6 blur-2xl transition-all duration-300 group-hover:bg-[#00C2B8]/10" />
 
-                  <div className="relative flex flex-col">
+                  <div className="relative flex h-full flex-col transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
                     <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#00C2B8]/15 bg-[#00C2B8]/8 text-[#00C2B8] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#00C2B8] group-hover:text-white">
                       <Icon className="h-6 w-6" />
                     </div>
 
-                    <span className="inline-flex rounded-full bg-[#00C2B8]/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#00C2B8]">
+                    <span className="inline-flex w-fit rounded-full bg-[#00C2B8]/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#00C2B8]">
                       Service {i + 1}
                     </span>
 
@@ -177,7 +207,57 @@ export default function Services() {
                     <p className="mt-5 text-sm leading-7 text-gray-600">
                       {service.description}
                     </p>
+
+                    <p className="mt-auto pt-6 text-sm font-semibold text-[#00C2B8]">
+                      See More
+                    </p>
                   </div>
+
+                  <div className="absolute inset-0 z-10 flex flex-col rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(240,253,251,0.98)_100%)] p-5 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 group-focus-within:opacity-100 sm:p-6">
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#00C2B8] text-white shadow-md">
+                        <Icon className="h-5 w-5" />
+                      </div>
+
+                      <div>
+                        <h3 className="text-sm font-semibold text-[#223f77]">
+                          {service.title}
+                        </h3>
+                        <p className="text-[11px] uppercase tracking-[0.18em] text-[#00C2B8]">
+                          {service.subtitle}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className={scrollAreaClass}>
+                      <ul className="space-y-3">
+                        {service.hoverPoints.map((point) => (
+                          <li
+                            key={point}
+                            className="flex items-start gap-3 rounded-2xl border border-[#00C2B8]/10 bg-white/80 px-4 py-3 text-sm leading-6 text-gray-700 shadow-sm"
+                          >
+                            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#00C2B8]" />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="sticky bottom-0 mt-4 bg-gradient-to-t from-[#eefcf9] via-[#eefcf9]/95 to-transparent pt-4">
+                        <Link
+                          href="/contact"
+                          className="inline-flex w-full items-center justify-center rounded-full bg-[#00C2B8] px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-[#00b2aa]"
+                        >
+                          Contact us
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    aria-label={`Show more about ${service.title}`}
+                    className="absolute inset-0 z-20 block cursor-pointer rounded-[28px] md:hidden"
+                  />
                 </motion.article>
               </li>
             );
@@ -187,23 +267,71 @@ export default function Services() {
         <motion.article
           {...fadeUp}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="group mt-16 w-full rounded-2xl bg-[#223f77] p-10 text-center text-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
+          className="group relative mt-16 w-full overflow-hidden rounded-2xl bg-[#223f77] p-8 text-center text-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg sm:p-10"
         >
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 text-[#00C2B8] transition group-hover:bg-[#00C2B8] group-hover:text-white">
-            <AddonIcon className="h-7 w-7" />
+          <div className="relative transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 text-[#00C2B8] transition group-hover:bg-[#00C2B8] group-hover:text-white">
+              <AddonIcon className="h-7 w-7" />
+            </div>
+
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.25em] text-[#00C2B8]">
+              {addon.title}
+            </p>
+
+            <h3 className="mt-3 text-xl font-semibold">{addon.subtitle}</h3>
+
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-white/90">
+              {addon.description}
+            </p>
+
+            <p className="mt-6 text-sm font-semibold text-[#00C2B8]">See More</p>
           </div>
 
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.25em] text-[#00C2B8]">
-            {addon.title}
-          </p>
+          <div className="absolute inset-0 z-10 flex flex-col bg-[linear-gradient(180deg,rgba(34,63,119,0.96)_0%,rgba(20,34,67,0.98)_100%)] p-5 text-left opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 group-focus-within:opacity-100 sm:p-6">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#00C2B8] text-white shadow-md">
+                <AddonIcon className="h-5 w-5" />
+              </div>
 
-          <h3 className="mt-3 text-xl font-semibold">
-            {addon.subtitle}
-          </h3>
+              <div>
+                <h3 className="text-sm font-semibold text-white">{addon.title}</h3>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#00C2B8]">
+                  {addon.subtitle}
+                </p>
+              </div>
+            </div>
 
-          <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-white/90">
-            {addon.description}
-          </p>
+            <div
+              className="min-h-0 flex-1 overflow-y-auto pr-2 [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#00C2B8]/70 hover:[&::-webkit-scrollbar-thumb]:bg-[#00C2B8]"
+            >
+              <ul className="space-y-3">
+                {addon.hoverPoints.map((point) => (
+                  <li
+                    key={point}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm leading-6 text-white/90 shadow-sm"
+                  >
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#00C2B8]" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="sticky bottom-0 mt-4 bg-gradient-to-t from-[#223f77] via-[#223f77]/95 to-transparent pt-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-[#00C2B8] px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-[#00b2aa]"
+                >
+                  Contact us
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            aria-label={`Show more about ${addon.title}`}
+            className="absolute inset-0 z-20 block cursor-pointer rounded-2xl md:hidden"
+          />
         </motion.article>
       </div>
     </section>
