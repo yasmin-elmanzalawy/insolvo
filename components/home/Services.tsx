@@ -22,22 +22,15 @@ function PhoneIcon({ className = "h-6 w-6" }: IconProps) {
 
 function ClickIcon({ className = "h-6 w-6" }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+       <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
       <path
-        d="M12 4a7 7 0 1 0 7 7"
+        d="M6 3l12 12-5 1-1 5L6 3Z"
         stroke="currentColor"
         strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M15 3h6v6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M21 3 12 12"
+        d="M14 3v3M21 10h-3M17.5 6.5l2-2"
         stroke="currentColor"
         strokeWidth="1.8"
         strokeLinecap="round"
