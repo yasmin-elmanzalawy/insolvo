@@ -260,8 +260,7 @@ export default function ContactPage() {
               )}
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                
-
+               
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -340,19 +339,6 @@ export default function ContactPage() {
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-8 overflow-hidden rounded-2xl border border-[#00C2B8]/10 shadow-sm">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.666599550645!2d-104.82420962435991!3d41.141803611193005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876f3aecc562f245%3A0xf3fcbee24eb470cb!2s2636%20Capitol%20Ave%2C%20Cheyenne%2C%20WY%2082001%2C%20USA!5e0!3m2!1sen!2seg!4v1773879422052!5m2!1sen!2seg"
-                  width="600"
-                  height="450"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="h-[320px] w-full"
-                />
               </div>
             </div>
           </motion.div>
