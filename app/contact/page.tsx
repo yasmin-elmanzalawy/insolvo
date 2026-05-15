@@ -225,7 +225,7 @@ x              </span>
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="text-sm font-medium text-[#223f77]">Message</label>
+                  <label className="text-sm font-medium text-[#223f77] required">Message</label>
                   <textarea
                     name="message"
                     rows={6}
@@ -254,6 +254,7 @@ x              </span>
 
   <label className="flex items-start gap-3 text-sm text-gray-600">
     <input
+    required
       type="checkbox"
       className="mt-1 h-4 w-4 rounded border-[#dcefeb] text-[#00C2B8] focus:ring-[#00C2B8]"
     />
