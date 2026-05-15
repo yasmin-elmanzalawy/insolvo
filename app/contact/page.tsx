@@ -155,8 +155,7 @@ export default function ContactPage() {
 
             <div className="relative">
               <span className="inline-flex rounded-full bg-[#00C2B8]/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#00C2B8]">
-                Send a message
-              </span>
+x              </span>
 
               <h2 className="mt-5 text-xl font-semibold text-[#223f77]">
                 Tell us about your business.
@@ -236,6 +235,36 @@ export default function ContactPage() {
                     className="mt-2 w-full rounded-2xl border border-[#dcefeb] bg-[#f8fbff] px-4 py-3 text-sm text-[#223f77] outline-none transition-all duration-200 placeholder:text-gray-400 hover:border-[#00C2B8]/40 focus:border-[#00C2B8] focus:ring-4 focus:ring-[#00C2B8]/10"
                   />
                 </div>
+                <div className="sm:col-span-2 space-y-4">
+  <label className="flex items-start gap-3 text-sm text-gray-600">
+    <input
+      type="checkbox"
+      required
+      className="mt-1 h-4 w-4 rounded border-[#dcefeb] text-[#00C2B8] focus:ring-[#00C2B8]"
+    />
+    <span>
+      By checking this box, I consent to receive transactional messages from
+      Insolvo LLC related to my account, orders, or services I have requested.
+      These messages may include appointment reminders, order confirmations,
+      account notifications, and other service-related communications. Message
+      frequency may vary. Message & Data rates may apply. Reply HELP for help
+      or STOP to opt out.
+    </span>
+  </label>
+
+  <label className="flex items-start gap-3 text-sm text-gray-600">
+    <input
+      type="checkbox"
+      className="mt-1 h-4 w-4 rounded border-[#dcefeb] text-[#00C2B8] focus:ring-[#00C2B8]"
+    />
+    <span>
+      By checking this box, I consent to receive marketing and promotional
+      messages from Insolvo LLC, including special offers, discounts, and
+      updates about new products or services. Message frequency may vary.
+      Message & Data rates may apply. Reply HELP for help or STOP to opt out.
+    </span>
+  </label>
+</div>
 
                 <input
                   type="checkbox"

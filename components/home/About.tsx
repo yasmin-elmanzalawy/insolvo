@@ -27,25 +27,25 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="bg-white px-6 py-16 sm:px-8 lg:px-12 lg:py-24"
+      className="bg-white px-6 py-16 sm:px-8 lg:px-12 lg:py-12"
     >
       <div className="mx-auto max-w-6xl">
         {/* Top Section */}
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-12 ">
           {/* Text */}
-          <header className="text-center lg:text-left">
+          <header className="text-center ">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[#00C2B8]">
               About Insolvo
             </p>
 
             <h2
               id="about-heading"
-              className="text-2xl font-semibold leading-tight text-[#223f77] sm:text-3xl"
+              className="text-2xl font-semibold leading-tight text-[#223f77] sm:text-3xl text-center"
             >
               Real estate marketing and lead generation built to help investors scale smarter.
             </h2>
 
-            <div className="mt-8 space-y-6 text-sm leading-7 text-gray-700">
+            {/* <div className="mt-8 space-y-6 text-sm leading-7 text-gray-700">
               {aboutText.map((para, i) => (
                 <motion.p
                   key={i}
@@ -55,11 +55,11 @@ export default function About() {
                   {para}
                 </motion.p>
               ))}
-            </div>
+            </div> */}
           </header>
 
           {/* Image */}
-          <motion.div
+          {/* <motion.div
             {...fadeUp}
             transition={{ duration: 0.8 }}
             className="relative mx-auto w-full max-w-[520px]"
@@ -73,7 +73,7 @@ export default function About() {
                 className="h-full w-full object-cover"
               />
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Mission + Vision */}

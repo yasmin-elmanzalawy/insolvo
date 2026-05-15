@@ -55,40 +55,40 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden items-center gap-10 lg:flex">
-            <nav className="flex items-center gap-8 ">
-              <Link
-                href="/#hero"
-                className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
-              >
-                Home
-              </Link>
+         {/* Desktop Navigation */}
+<div className="hidden items-center gap-10 lg:flex">
+  <nav className="flex items-center gap-8 ">
+    <Link
+      href="/#hero"
+      className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
+    >
+      Home
+    </Link>
 
-              <Link
-                href="/#about"
-                className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
-              >
-                About
-              </Link>
+    <Link
+      href="/#services"
+      className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
+    >
+      Services
+    </Link>
 
-              <Link
-                href="/#services"
-                className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
-              >
-                Services
-              </Link>
-            </nav>
+    <Link
+      href="/privacy-policy"
+      className="relative text-sm font-bold text-white/80 transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-300 after:transition-all after:duration-300 hover:after:w-full"
+    >
+      Privacy Policy
+    </Link>
+  </nav>
 
-            {/* Contact Button */}
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#223f77]"
-            >
-              Contact Us
-              <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </div>
+  {/* Contact Button */}
+  <Link
+    href="/contact"
+    className="group inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#223f77]"
+  >
+    Contact Us
+    <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+  </Link>
+</div>
 
           {/* Mobile Hamburger */}
           <button
@@ -128,13 +128,7 @@ export default function Navbar() {
               Home
             </Link>
 
-            <Link
-              href="/#about"
-              onClick={closeMenu}
-              className="text-white/90 transition hover:text-white"
-            >
-              About
-            </Link>
+          
 
             <Link
               href="/#services"
@@ -143,6 +137,13 @@ export default function Navbar() {
             >
               Services
             </Link>
+            <Link
+  href="/privacy-policy"
+  onClick={closeMenu}
+  className="text-white/90 transition hover:text-white"
+>
+  Privacy Policy
+</Link>
 
             <Link
               href="/contact"
