@@ -77,7 +77,7 @@ export default function About() {
         </div>
 
         {/* Mission + Vision */}
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
+        <div className="mt-8 mb-24 grid gap-8 md:grid-cols-2">
           <motion.article
             {...fadeUp}
             transition={{ duration: 0.6 }}
@@ -122,7 +122,7 @@ export default function About() {
         </div>
 
         {/* Team */}
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <header className="text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[#00C2B8]">
               Our Team
@@ -164,7 +164,7 @@ export default function About() {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     </section>
   );
